@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>My Todolist</title>
+    <link rel="stylesheet" href="css/styles.css">
+</head>
+<body>
+    <div id="app" class="container">
+        <h1>My Todos</h1>
+        <ul>
+            <li v-for="(todo, i) in todos">
+                <span v-if="todos.length==i+1" v-bind:class="redClass">{{ todo }} (←latest)</span>
+                <span v-else>{{ todo }}</span>
+            </li>
+        </ul>
+        <form>
+            <input type="text" v-model="todotext" v-on:keydown.enter.exact.prevent v-on:keydown.enter.exact="addTodo">
+            <input type="button" value="Add" @click.enter="addTodo">
+        </form>
+    </div>
+    <script src="https://cdn.jsdelivr.net/npm/vue@2/dist/vue.js"></script>
+    <script src="js/main.js"></script>
+</body>
+</html>
